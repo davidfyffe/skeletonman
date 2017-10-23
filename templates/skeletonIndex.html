@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Control Skeleton Man</title>
+
+    <style>
+        img {
+            height: 100px;
+            float: left;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+
+<script>
+    function CallServoOne() {
+        var servoApi = "http://localhost:8000/skeletonman/servo/3";
+        $.getJSON( servoApi, {
+        })
+            .done(function( data ) {
+                $( "#ReturnedText" ).append("<p>" +  data + "</p>");
+            });
+    }
+
+</script>
+
+
+
+<button type="button" onclick="CallServoOne()">Push To Servo One!</button>
+<div id="ReturnedText"></div>
+
+</body>
+</html>
