@@ -34,8 +34,8 @@ def main():
             try:
                 '''
                 '''
-                print "running"
-                time.sleep(100)
+#                print "running"
+#                time.sleep(100)
             
             except KeyboardInterrupt:
                 running=False

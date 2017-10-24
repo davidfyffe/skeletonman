@@ -11,5 +11,5 @@ class MotionController(object):
         GPIO.setup(self.gpio_pin, GPIO.IN)
         GPIO.add_event_detect(self.gpio_pin, GPIO.RISING, callback=self.MOTION)
 
-    def MOTION(gpio_pin):
+    def MOTION(self, gpio_pin):
         print "motion detect"
