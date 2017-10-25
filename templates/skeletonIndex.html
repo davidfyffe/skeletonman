@@ -60,7 +60,7 @@
 
 <script>
     function CallServoOne(servoNum) {
-        var servoApi = "http://localhost:8000/skeletonman/servo/"+servoNum+"/";
+        var servoApi = "http://192.168.0.16:8000/skeletonman/servo/"+servoNum+"/";
         $.getJSON( servoApi, {
         })
             .done(function( data ) {
@@ -69,7 +69,7 @@
     }
 
     function CallScarySounds() {
-        var servoApi = "http://localhost:8000/skeletonman/scarysounds/";
+        var servoApi = "http://192.168.0.16:8000/skeletonman/scarysounds/";
         $.getJSON( servoApi, {
         })
             .done(function( data ) {
@@ -78,7 +78,7 @@
     }
 
     function CallSpeakWithText() {
-        var servoApi = "http://localhost:8000/skeletonman/speak/";
+        var servoApi = "http://192.168.0.16:8000/skeletonman/speak/";
 
         $.ajax({
             url: servoApi,
@@ -94,7 +94,7 @@
 
 
 
-<div class="button big-btn" onclick="CallServoOne(1)">Move Servo One</div>
+<div class="button big-btn" onclick="CallServoOne(0)">Move Servo One</div>
 <div class="button big-btn" onclick="CallServoOne(2)">Move Servo Two</div>
 <div class="button big-btn" onclick="CallScarySounds()">Play Scary Sounds</div>
 <div class="button big-btn" onclick="CallSpeakWithText()">Talk Shit</div>

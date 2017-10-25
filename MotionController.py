@@ -1,5 +1,7 @@
 import RPi.GPIO as GPIO # Remember to run as superuser (sudo)
 import time
+import skeletonManRest as skeletonManRest
+import thread
 
 class MotionController(object):
 
@@ -13,3 +15,9 @@ class MotionController(object):
 
     def MOTION(self, gpio_pin):
         print "motion detect"
+        thread.start_new_thread(skeletonManRest.callServo, (0,))
+        thread.start_new_thread(skeletonManRest.callServo, (2,))
+        thread.start_new_thread(skeletonManRest.callScarySounds, ())
+        
+
+#motionController.MOTION(self, 1)

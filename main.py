@@ -29,6 +29,8 @@ def main():
     MOTIONSENSOR = 27
     motionSensor = MotionController(MOTIONSENSOR)
     
+    motionSensor.MOTION(1)
+    
     running=True
     while running==True:
             try:
