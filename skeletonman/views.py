@@ -6,6 +6,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template import loader
 from django.views.generic.base import TemplateView
+from rest_framework.parsers import JSONParser
 
 
 # Create your views here.
@@ -37,7 +38,6 @@ def servo_number(request, pk):
 
         return JsonResponse("some shit from skeletonman servo rest api " + pk, safe=False)
 
-
 @csrf_exempt
 def servo_all(request):
     """
@@ -46,3 +46,22 @@ def servo_all(request):
     if request.method == 'GET':
 
         return JsonResponse("some shit from skeletonman servo rest api", safe=False)
+
+@csrf_exempt
+def scarysounds(request):
+    """
+    List all code snippets, or create a new snippet.
+    """
+    if request.method == 'GET':
+
+        return JsonResponse("some shit from skeletonman scary sounds", safe=False)
+
+@csrf_exempt
+def speak(request):
+    """
+    List all code snippets, or create a new snippet.
+    """
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        print data
+        return JsonResponse("some shit from skeletonman speak some text" + request.data, safe=False)

@@ -9,6 +9,48 @@
             height: 100px;
             float: left;
         }
+
+        .button {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            text-decoration: none;
+
+            color: #FFFFFF;
+            background-color: #000000;
+            border-color: #ccc;
+        }
+
+        .small-btn {
+            width: 50px;
+            height: 25px;
+        }
+
+        .medium-btn {
+            width: 70px;
+            height: 30px;
+        }
+
+        .big-btn {
+            width: 90px;
+            height: 40px;
+        }
     </style>
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -17,8 +59,8 @@
 
 
 <script>
-    function CallServoOne() {
-        var servoApi = "http://192.168.0.16:8000/skeletonman/servo/3/";
+    function CallServoOne(servoNum) {
+        var servoApi = "http://localhost:8000/skeletonman/servo/"+servoNum+"/";
         $.getJSON( servoApi, {
         })
             .done(function( data ) {
@@ -26,11 +68,40 @@
             });
     }
 
+    function CallScarySounds() {
+        var servoApi = "http://localhost:8000/skeletonman/scarysounds/";
+        $.getJSON( servoApi, {
+        })
+            .done(function( data ) {
+                $( "#ReturnedText" ).append("<p>" +  data + "</p>");
+            });
+    }
+
+    function CallSpeakWithText() {
+        var servoApi = "http://localhost:8000/skeletonman/speak/";
+
+        $.ajax({
+            url: servoApi,
+            contentType: 'application/json',
+            method: "POST",
+            data: JSON.stringify({text : $("#TextArea")[0].value})
+        }).done(function( data ) {
+            $("#ReturnedText").append("<p>" + data + "</p>");
+        });
+    }
+
 </script>
 
 
 
-<button type="button" onclick="CallServoOne()">Push To Servo One!</button>
+<div class="button big-btn" onclick="CallServoOne(1)">Move Servo One</div>
+<div class="button big-btn" onclick="CallServoOne(2)">Move Servo Two</div>
+<div class="button big-btn" onclick="CallScarySounds()">Play Scary Sounds</div>
+<div class="button big-btn" onclick="CallSpeakWithText()">Talk Shit</div>
+<textarea rows="4" cols="50" id="TextArea">
+Some shit.
+</textarea>
+
 <div id="ReturnedText"></div>
 
 </body>
