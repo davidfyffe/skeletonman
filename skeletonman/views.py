@@ -8,6 +8,7 @@ from django.template import loader
 from django.views.generic.base import TemplateView
 from rest_framework.parsers import JSONParser
 import servoControlleri2c as servoController
+import playSoundFile as playSoundFile
 import thread
 
 # Create your views here.
@@ -36,7 +37,7 @@ def servo_number(request, pk):
     List all code snippets, or create a new snippet.
     """
     if request.method == 'GET':
-        thread.start_new_thread(servoController.moveServo, (pk,))
+        thread.start_new_thread(servoController.move_servo, (pk,))
         return JsonResponse("some shit from skeletonman servo rest api " + pk, safe=False)
 
 @csrf_exempt
@@ -54,7 +55,7 @@ def scarysounds(request):
     List all code snippets, or create a new snippet.
     """
     if request.method == 'GET':
-
+        playSoundFile.play_sound()
         return JsonResponse("some shit from skeletonman scary sounds", safe=False)
 
 @csrf_exempt
