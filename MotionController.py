@@ -5,7 +5,8 @@ import thread
 
 class MotionController(object):
 
-    
+    IS_RUNNING = False
+
     'Common controller class. takes pin number'
     def __init__(self, gpio_pin):
         self.gpio_pin = gpio_pin
@@ -14,10 +15,15 @@ class MotionController(object):
         GPIO.add_event_detect(self.gpio_pin, GPIO.RISING, callback=self.MOTION)
 
     def MOTION(self, gpio_pin):
-        print "motion detect"
-        thread.start_new_thread(skeletonManRest.callServo, (0,))
-        thread.start_new_thread(skeletonManRest.callServo, (2,))
-        thread.start_new_thread(skeletonManRest.callScarySounds, ())
+        if self.IS_RUNNING == False:
+            self.IS_RUNNING = True
+            print "motion detect"
+            thread.start_new_thread(skeletonManRest.callServo, (0,))
+            thread.start_new_thread(skeletonManRest.callServo, (2,))
+            #call sounds sync so it waits on the finish
+            skeletonManRest.callScarySounds()
+            self.IS_RUNNING = False
+            print "motion detect"
         
 
 #motionController.MOTION(self, 1)
