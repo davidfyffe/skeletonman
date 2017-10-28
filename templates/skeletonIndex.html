@@ -68,8 +68,8 @@
             });
     }
 
-    function CallScarySounds() {
-        var servoApi = "http://192.168.0.16:8000/skeletonman/scarysounds/";
+    function CallScarySounds(sound) {
+        var servoApi = "http://192.168.0.16:8000/skeletonman/scarysounds/"+sound+"/";
         $.getJSON( servoApi, {
         })
             .done(function( data ) {
@@ -96,13 +96,14 @@
 
 <div class="button big-btn" onclick="CallServoOne(0)">Move Servo One</div>
 <div class="button big-btn" onclick="CallServoOne(2)">Move Servo Two</div>
-<div class="button big-btn" onclick="CallScarySounds()">Play Scary Sounds</div>
-<div class="button big-btn" onclick="CallSpeakWithText()">Talk Shit</div>
+<div class="button big-btn" onclick="CallScarySounds('scream')">Play Scary Scream</div>
+<div class="button big-btn" onclick="CallScarySounds('laugh')">Play Scary Laugh</div>
+<div class="button big-btn" onclick="CallSpeakWithText()">Talk</div>
 <textarea rows="4" cols="50" id="TextArea">
-Some shit.
+Some text 
 </textarea>
 
-<div id="ReturnedText"></div>
+<udiv id="ReturnedText"></div>
 
 </body>
 </html>

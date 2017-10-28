@@ -6,5 +6,6 @@ def callServo(servoNum):
     print r.text
 
 def callScarySounds():
-    r = requests.get('http://192.168.0.16:8000/skeletonman/scarysounds/')
+    r = requests.get('http://192.168.0.16:8000/skeletonman/scarysounds/laugh/')
+    r = requests.get('http://192.168.0.16:8000/skeletonman/scarysounds/scream/')
     print r.text

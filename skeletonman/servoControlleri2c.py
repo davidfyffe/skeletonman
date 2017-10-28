@@ -19,7 +19,9 @@ pwm = Adafruit_PCA9685.PCA9685()
 # pwm = Adafruit_PCA9685.PCA9685(address=0x41, busnum=2)
 
 # Configure min and max servo pulse lengths
-servo_min = 150  # Min pulse length out of 4096
+#servo_min = 150  # Min pulse length out of 4096
+servo_min = 300 # Min pulse length out of 4096
+#servo_max = 600  # Max pulse length out of 4096
 servo_max = 600  # Max pulse length out of 4096
 
 
@@ -41,10 +43,18 @@ pwm.set_pwm_freq(60)
 
 def move_servo(servonum):
     for x in range(0, 3):
-        pwm.set_pwm(int(servonum), 0, servo_min)
-        time.sleep(1)
-        pwm.set_pwm(int(servonum), 0, servo_max)
-        time.sleep(1)
+        for i in range(servo_min, servo_max): 
+           pwm.set_pwm(int(servonum), 0, i)
+           #print i 
+           #time.sleep(0.30)
+        #print 'doing h'
+        for h in range(servo_max, servo_min):
+           pwm.set_pwm(int(servonum), 0, h)
+           #time.sleep(0.39)
+           #print h
+
+    #pwm.set_pwm(int(servonum), 0, servo_max)
+        #time.sleep(2)
 
 
 '''print('Moving servo on channel 0, press Ctrl-C to quit...')

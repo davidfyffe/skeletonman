@@ -8,6 +8,6 @@ urlpatterns = [
     #url(r'^$', views.index, name='index'),
     url(r'^servo/$', views.servo_all),
     url(r'^servo/(?P<pk>[0-9]+)/$', views.servo_number),
-    url(r'^scarysounds/$', views.scarysounds),
+    url(r'^scarysounds/(?P<sound>\w{1,50})/$', views.scarysounds),
     url(r'^speak/$', views.speak),
 ]
