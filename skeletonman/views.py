@@ -34,7 +34,7 @@ def servo_number(request, pk):
     """
     if request.method == 'GET':
         thread.start_new_thread(servoController.move_servo, (pk,))
-        return JsonResponse("some shit from skeletonman servo rest api " + pk, safe=False)
+        return JsonResponse("some response from skeletonman servo rest api " + pk, safe=False)
 
 
 @csrf_exempt
@@ -43,7 +43,7 @@ def servo_all(request):
     List all code snippets, or create a new snippet.
     """
     if request.method == 'GET':
-        return JsonResponse("some shit from skeletonman servo rest api", safe=False)
+        return JsonResponse("some response from skeletonman servo rest api", safe=False)
 
 
 @csrf_exempt
@@ -53,7 +53,7 @@ def scarysounds(request, sound):
     """
     if request.method == 'GET':
         playSoundFile.play_sound(sound)
-        return JsonResponse("some shit from skeletonman scary sounds", safe=False)
+        return JsonResponse("some response from skeletonman scary sounds", safe=False)
 
 @csrf_exempt
 def speak(request):

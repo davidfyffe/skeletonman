@@ -23,7 +23,7 @@ class MotionController(object):
             #call sounds sync so it waits on the finish
             skeletonManRest.callScarySounds()
             self.IS_RUNNING = False
-            print "motion detect"
+            print "motion detect end"
         
 
 #motionController.MOTION(self, 1)
