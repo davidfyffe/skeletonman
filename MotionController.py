@@ -20,6 +20,7 @@ class MotionController(object):
             print "motion detect"
             thread.start_new_thread(skeletonManRest.callServo, (0,))
             thread.start_new_thread(skeletonManRest.callServo, (2,))
+            thread.start_new_thread(skeletonManRest.callServo, (3,))
             #call sounds sync so it waits on the finish
             skeletonManRest.callScarySounds()
             self.IS_RUNNING = False
